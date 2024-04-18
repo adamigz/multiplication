@@ -17,9 +17,13 @@ class MultiplicationCacheService {
         return Cache::get(self::createKey($multiplicand, $multiplier));
     }
 
-    private static function createKey($multiplicand, $multiplier) {
+    protected static function createKey($multiplicand, $multiplier) {
         $arr = [$multiplicand, $multiplier];
         sort($arr);
         return implode('x', $arr);
+    }
+
+    public static function testableCreateKey($multiplicand, $multiplier) {
+        return self::createKey($multiplicand, $multiplier);
     }
 }
